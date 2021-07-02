@@ -1,0 +1,32 @@
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+  <li class="breadcrumb-item active" aria-current="page">Lista de contatos</li>
+  <li class="breadcrumb-item active" aria-current="page"><a routerLink="/contato/novo"><button type="button" class="btn btn-primary">Novo Cadastro</button></a></li>
+</ol>
+</nav>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <!-- Navbar content -->
+</nav>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">NOME</th>
+      <th scope="col">CPF</th>
+      <th scope="col">E-MAIL</th>
+      <th scope="col">TELEFONE</th>
+      <th scope="col">AÇÕES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contato of filtrarContatos">
+      <td>{{contato.nome}}</td>
+      <td>{{contato.cpf | cpf}}</td>
+      <td>{{contato.email}}</td>
+      <td>{{contato.telefone | telefone}}</td>
+      <td>
+        <a [routerLink]="['', 'contato', contato.id, 'editar']" class="btn btn-outline-info btn-sm mr-2"><button type="button" class="btn btn-warning">Editar</button></a>
+        <a [routerLink]="['', 'contato', contato.id, 'deletar']" class="btn btn-outline-danger btn-sm mr-2"><button type="button" class="btn btn-danger">Deletar</button></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
